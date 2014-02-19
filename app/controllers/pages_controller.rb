@@ -2,25 +2,34 @@
 
 
     def home
-      @username = params[:name]
+      @username = cookies[:username]
     end
 
     def sports
-      @username = params[:name]
+      @username = cookies[:username]
     end
 
-    def food
-      @username = params[:name]
+    def foods
+      @username = cookies[:username]
+      cookies.delete(:username)
     end
 
     def places
-      @username = params[:name]
+      @username = cookies[:username]
     end
 
     def login
       @username = params[:name]
-
+      session[:username] = @username
       render 'home'
     end
 
   end
+
+
+
+
+
+
+
+

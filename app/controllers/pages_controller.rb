@@ -2,20 +2,19 @@
 
 
     def home
-      @username = cookies[:username]
+      @username = session[:username]
     end
 
     def sports
-      @username = cookies[:username]
+      @username = session[:username]
     end
 
     def foods
-      @username = cookies[:username]
-      cookies.delete(:username)
+      @username = session[:username]
     end
 
     def places
-      @username = cookies[:username]
+      @username = session[:username]
     end
 
     def login

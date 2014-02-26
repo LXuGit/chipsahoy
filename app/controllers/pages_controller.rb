@@ -15,11 +15,22 @@
     end
 
     def foods
+      if session[:username].blank?
+        redirect_to root_url, notice: "Nice Try!"
+        return
+      end
+
       @username = session[:username]
     end
 
     def places
+      if session[:username].blank?
+        redirect_to root_url, notice: "Nice Try!"
+        return
+      end
+
       @username = session[:username]
+      render 'places'
     end
 
     def login

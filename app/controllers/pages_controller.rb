@@ -1,40 +1,29 @@
   class PagesController < ApplicationController
 
+    before_action :require_login, :except => [:home, :login]
+    before_action :identify_user
+
+    def identify_user
+      user = User.find_by(id: session[:user_id])
+      if user
+        @username = user.name
+      end
+    end
+
+    def require_login
+      if session[:user_id].blank?
+        redirect_to root_url, notice: "Nice Try!"
+      end
+    end
+
     def logout
       #session[:username] = nil
       reset_session
       redirect_to root_url
     end
 
-    def home
-      @username = session[:username]
-    end
-
-    def sports
-      @username = session[:username]
-    end
-
-    def foods
-      if session[:username].blank?
-        redirect_to root_url, notice: "Nice Try!"
-        return
-      end
-
-      @username = session[:username]
-    end
-
-    def places
-      if session[:username].blank?
-        redirect_to root_url, notice: "Nice Try!"
-        return
-      end
-
-      @username = session[:username]
-      render 'places'
-    end
-
     def login
-      session[:username] = params[:name]
+      session[:id] = params[:name]
       redirect_to root_url
     end
 

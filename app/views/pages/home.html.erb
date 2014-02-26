@@ -1,14 +1,9 @@
 
 <h1 class="page-header">Hello <%= @username %></h1>
 
-<% if session[:username] %>
+<% if session[:user_id] %>
   <div>
     <h2><%= link_to "Logout", "/logout" %></h2>
   </div>
-<% end %>
-
-<%= form_tag login_path do %>
-  <%= text_field_tag :name %>
-  <%= submit_tag "Login" %>
 <% end %>
 

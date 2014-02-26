@@ -1,6 +1,9 @@
 Chipsahoy::Application.routes.draw do
   root "pages#home"
 
+  resources :users
+  resources :sessions
+
   post '/login' => 'pages#login'
   get "/logout" => "pages#logout"
 

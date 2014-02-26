@@ -4,8 +4,7 @@ Chipsahoy::Application.routes.draw do
   resources :users
   resources :sessions
 
-  post '/login' => 'pages#login'
-  get "/logout" => "pages#logout"
+  get "/logout" => "sessions#destroy", as: 'logout'
 
   get "/sports" => "pages#sports"
   get "/foods" => "pages#foods"

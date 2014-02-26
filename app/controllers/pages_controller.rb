@@ -1,5 +1,10 @@
   class PagesController < ApplicationController
 
+    def logout
+      #session[:username] = nil
+      reset_session
+      redirect_to root_url
+    end
 
     def home
       @username = session[:username]
@@ -18,9 +23,8 @@
     end
 
     def login
-      @username = params[:name]
-      session[:username] = @username
-      render 'home'
+      session[:username] = params[:name]
+      redirect_to root_url
     end
 
   end
